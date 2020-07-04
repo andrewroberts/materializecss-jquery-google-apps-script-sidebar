@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <?!= include('Sidebar.css') ?>
+  </head>
+  <body>
+    <div class="container">
+      <div class="section">
+        <h5>Test Form</h5>
+        <div class="row">
+          <form id="test-form" class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <input placeholder="Placeholder" id="first_name" name="first_name" type="text" class="validate" required>
+                <label for="first_name">First Name</label>
+              </div>    
+              <div class="input-field col s6">
+                <input id="last_name" name="last_name" type="text" class="validate" required>
+                <label for="last_name">Last Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="password" name="password" type="password" class="validate" required>
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" name="email" type="email" class="validate" required>
+                <label for="email">Email</label>
+              </div>
+            </div>
+            <button id="submit-button" name="submit-button" type="submit" class="waves-effect waves-light btn">
+              <i class="material-icons right">send</i>Submit
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="flow-text status" id="submit-status" hidden></div>
+      </div>
+    </div>
+    <?!= include('Sidebar.js') ?>  
+  </body>
+</html>

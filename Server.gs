@@ -18,34 +18,40 @@ function onOpenSidebar() {
 function onFormSubmit(form) {
 
   var spreadsheet = SpreadsheetApp.getActive()
-  var sheet = getSheet_(spreadsheet) 
+  var sheet = getSheet(spreadsheet) 
+  var photoUrl = (form.filepath) ? DriveApp.createFile(form.photo).getUrl() : ''
+  
   sheet.appendRow([
     new Date(),
     form.first_name,
     form.last_name,
     form.password,
-    form.email
+    form.email,
+    photoUrl
   ])
-}
-
-function getSheet_(spreadsheet) {
   
-  var sheet = spreadsheet.getSheetByName('Results')  
+  // Private Functions
+  // -----------------
   
-  if (sheet === null) {
-    sheet = spreadsheet.insertSheet().setName('Results')
+  function getSheet(spreadsheet) {
+    
+    var sheet = spreadsheet.getSheetByName('Results')  
+    
+    if (sheet === null) {
+      sheet = spreadsheet.insertSheet().setName('Results')
+    }
+    
+    if (sheet.getRange('A1').getValue() === '') {
+    
+      sheet
+        .getRange('A1:F1')
+        .setValues([['Timestamp', 'First Name', 'Last Name', 'Password', 'Email', 'Photo']])
+        
+      sheet.setFrozenRows(1)
+    }
+    
+    return sheet
   }
-  
-  if (sheet.getRange('A1').getValue() === '') {
-  
-    sheet
-      .getRange('A1:E1')
-      .setValues([['Timestamp', 'First Name', 'Last Name', 'Password', 'Email']])
-      
-    sheet.setFrozenRows(1)
-  }
-  
-  return sheet
 }
 
 function include(filename) {

@@ -13,13 +13,12 @@
             <div class="row">
               <div class="input-field col s6">
                 <input 
-                  placeholder="Placeholder" 
                   id="first_name" 
                   name="first_name" 
                   type="text" 
                   class="validate" 
                   required>
-                <label for="first_name">First Name</label>
+                <label for="first_name">First Name *</label>
               </div>    
               <div class="input-field col s6">
                 <input 
@@ -28,7 +27,7 @@
                   type="text" 
                   class="validate" 
                   required>
-                <label for="last_name">Last Name</label>
+                <label for="last_name">Last Name *</label>
               </div>
             </div>
             <div class="row">
@@ -39,7 +38,7 @@
                   type="password" 
                   class="validate" 
                   required>
-                <label for="password">Password</label>
+                <label for="password">Password *</label>
               </div>
             </div>
             <div class="row">
@@ -50,15 +49,38 @@
                   type="email" 
                   class="validate" 
                   required>
-                <label for="email">Email</label>
+                <label for="email">Email *</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="file-field input-field col s12">
+                <div 
+                  class="file-path-wrapper" 
+                  style="padding-left:0px;">
+                  <input type="file" name="photo" id="photo">
+                  <input 
+                    class="file-path validate" 
+                    type="text" 
+                    name="filepath" 
+                    id="filepath"
+                    placeholder="Select Photo"
+                    style="font-size:1rem">
+                </div>
               </div>
             </div>
             <button 
               id="submit-button" 
               name="submit-button" 
               type="submit" 
-              class="waves-effect waves-light btn">
+              class="waves-effect waves-light btn blue darken-2">
               <i class="material-icons right">send</i>Submit
+            </button>
+            <button 
+              id="reset-button" 
+              name="reset-button" 
+              type="reset" 
+              class="waves-effect waves-light btn grey black-text lighten-2">
+              Reset
             </button>
           </form>
         </div>

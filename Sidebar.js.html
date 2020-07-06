@@ -18,27 +18,39 @@
  
     var status = $('#submit-status')
     var button = $('#submit-button')
-    var form = $('#test-form')
+    var form = $('#test-form').get()[0]
   
     status.hide()
     button.text('Submitting...')
     button.addClass('disabled')
 
     google.script.run
-      .withSuccessHandler(function() {        
-        form.hide()
-        status.removeClass('error')
-        status.text('Form submitted OK!')
-        status.show()
+      .withSuccessHandler(function() {
+        resetForm('Form submitted OK!')
       })
       .withFailureHandler(function(error) {
-        status.addClass('error')
-        status.text(error)
-        status.show()
-        button.text('Submit')
-        button.removeClass('disabled')
+        resetForm(error, true)
       })
-      .onFormSubmit(form.get()[0]);  
+      .onFormSubmit(form);  
+      
+    // Private Functions
+    // -----------------
+
+    function resetForm(message, isError) {
+    
+      if (isError) {
+        status.addClass('error')
+      } else {
+        form.reset()
+        status.removeClass('error')      
+      }
+      
+      status.text(message)
+      status.show()
+      
+      button.text('Submit')
+      button.removeClass('disabled')
+    }
   }
 
 </script>
